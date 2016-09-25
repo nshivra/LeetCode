@@ -1,5 +1,4 @@
 // Code for reversing the string
-
 public class Solution {
     public String reverseString(String s) {
         int i = 0;
