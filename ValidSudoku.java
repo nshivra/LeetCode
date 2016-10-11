@@ -39,7 +39,6 @@ public class Solution {
         }
         
         for (int block = 0; block < 9; block++) {
-        	boolean[] m = new boolean[9];
         	for (int i = block / 3 * 3; i < block / 3 * 3 + 3; i++) {
         		for (int j = block % 3 * 3; j < block % 3 * 3 + 3; j++) {
                     if(hTest.containsKey(board[i][j])){
