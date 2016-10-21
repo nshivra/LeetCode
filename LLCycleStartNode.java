@@ -12,19 +12,23 @@
 public class Solution {
     public ListNode detectCycle(ListNode head) {
         if(head == null || head.next == null) return null;
-        if(head.val == head.next.val) return head;
-        
-        HashMap<ListNode,Boolean> hm = new HashMap<ListNode,Boolean>();
-        ListNode h = head;
-        hm.put(h,true);
-        h = h.next;
-        while(h!=null && !hm.containsKey(h)){
-            hm.put(h,true);
-            h = h.next;
+        if(head == head.next) return head;
+        if(head == head.next.next) return head;
+        ListNode slow= head;
+        ListNode fast= head;
+        slow = slow.next;
+        fast=fast.next.next;
+        while(fast!=null && fast.next!=null && slow!=fast){
+            slow = slow.next;
+            fast=fast.next.next;
         }
+        if(fast == null || fast.next == null) return null;
         
-        if(h == null) return null;
-        else return h;
-        
+        ListNode he = head;
+        while(he!=slow ){
+            he = he.next;
+            slow = slow.next;
+        }
+        return he;
     }
 }
